@@ -3,7 +3,7 @@
 # Check if the file exists
 if [ -f installed_packages.txt ]; then
     # Read the list of packages and reinstall them
-    while read package; do
+   while read -r package _; do
         sudo apt-get install --reinstall "$package"
     done < installed_packages.txt
 else
