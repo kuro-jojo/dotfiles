@@ -1,1 +1,13 @@
-/home/jonathan/.gitconfig
+[user]
+	email = 80401029+kuro-jojo@users.noreply.github.com
+	name = Jonathan ASSAMAGAN
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[alias]
+	ac = commit -am
+	cb = checkout -b

@@ -1,5 +1,0 @@
-hyper
-AndroidStudio
-Steam
-Epic games (Heroic Game Launcher)
-ColorPicker
