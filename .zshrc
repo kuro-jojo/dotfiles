@@ -68,10 +68,34 @@ fpath=($fpath ~/.zsh/completion)
 # Initialize Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# ================================================
+# Environment Variables
+# ================================================
+
+# Language environment
+# export LANG=en_US.UTF-8
+# export MANPATH="/usr/local/man:$MANPATH"
+# export ARCHFLAGS="-arch x86_64"  # Compilation flags
+
+# Editor preferences
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # ================================================
 # Aliases
 # ================================================
+alias compress_video='f(){ ffmpeg -i "$1" -vcodec libx265 -preset faster -crf 28 "$2"; }; f'
+alias s="sudo"
+
+# zoxide
+alias cd="z"
+
+# fzf
+alias fzfb="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+alias fzfi="fzf --preview 'fzf-preview.sh {}'"
 
 # Bat (better cat)
 alias bat="batcat"
@@ -107,7 +131,7 @@ alias kn="kubectl config set-context --current --namespace "
 # ================================================
 # Development Tools Configuration
 # ================================================
-
+export PATH="$PATH:$HOME/.local/bin:$SCRIPT_PATH"
 # Google Cloud SDK
 if [ -f '/home/jonathan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then 
   source '/home/jonathan/Downloads/google-cloud-sdk/path.zsh.inc'
@@ -133,7 +157,6 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/
 export PATH=$PATH:$ANDROID_HOME/build-tools
 export PATH=$PATH:$ANDROID_HOME/emulator/
 
-alias n8ntunnel="docker run -d cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiZmY2NjVkYTRjMWY2MzVlMmYzYzAxMTEzZDdkYmM1ODgiLCJ0IjoiZTIzZTU3M2YtMTFlZC00ZGFkLWJhOGEtZWQ3ZjNiMmYwMzM1IiwicyI6IlpHTXhNVGcyTTJRdFpEaGtNUzAwTURWbUxUbGlNVFl0WlRJek1UTmpORGhqTmpBMCJ9"
 
 # ================================================
 # Powerlevel10k Configuration
@@ -201,4 +224,7 @@ alias n8ntunnel="docker run -d cloudflare/cloudflared:latest tunnel --no-autoupd
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('load' 'ram' 'history' 'todo' 'time')
 # #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
-# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.
+eval "$(zoxide init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
